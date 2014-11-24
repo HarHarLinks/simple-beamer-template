@@ -1,0 +1,104 @@
+\documentclass[12pt]{beamer}
+%converts \items to more fancy bubbles
+\usetheme{Boadilla}
+
+%use some packages making it easier to write for germans and display various stuff
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{multirow}
+
+%disable navigation buttons in pdf
+\usenavigationsymbolstemplate{}
+
+%fill this in:
+\author{} %insert author
+\title{} %insert title
+\subtitle{} %insert subtitle if applicable
+\date{} %insert date (eg \today)
+\institute{} %insert institute; multiple lines are possible
+
+%create footer with author and current subtitle
+\defbeamertemplate{footline}{author and page number}{%
+	\usebeamercolor[fg]{page number in head/foot}%
+	\usebeamerfont{page number in head/foot}%
+	\hspace{1em}\insertshortauthor
+	\hspace{10em}\insertsubtitle\hfill%
+	\insertpagenumber\,/\,\insertpresentationendpage\kern1em\vskip2pt%
+}
+%use footer
+\setbeamertemplate{footline}[author and page number]{}
+
+%suppress the navigation bar
+\beamertemplatenavigationsymbolsempty
+
+%set captions to use a smaller font
+\usepackage[font=small,labelformat=empty]{caption}
+
+%display footnote only after reference gets active
+\let\footnoterule\relax
+
+%show a recap of the toc with current section highlighted at the start of every section
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Übersicht}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+%this creates a titlepage for you using the information you entered previously
+\begin{frame}[label=titlepage]
+\titlepage
+\end{frame}
+
+%show the toc to introduce to the talk
+\begin{frame}
+	\frametitle{Übersicht}
+    \tableofcontents
+\end{frame}
+
+%now follow some examples
+%begin a section to have some basic structure
+\section{First Section}
+\begin{frame}{\insertsection}
+%pause automatically generates a new frame so you can control when your content is displayed
+	\pause %it basically works intuitively and also in nearly every possible case
+%itemize is
+	\begin{itemize}
+	  \item a great way to present information without having too much text\pause
+	  \item often used in talks
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{This frame has a manual title}{and also subtitle}
+%columns and blocks are used to shape your frame into table-like sections
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth} %of course you can control the width
+
+		\end{column}
+		\begin{column}{0.5\textwidth}
+		
+		\end{column}
+	\end{columns}
+\end{frame}
+
+%remember the toc returns at the start of each new section
+
+\section{Second Section}
+\subsection{First Subsection}
+\begin{frame}{\insertsection}{\insertsubsection}
+  You can also use subsections and naturally include them als frame subtitles
+\end{frame}
+
+\subsection{Second Subsection}
+\begin{frame}{\insertsubsection}
+  or just as titles of course
+\end{frame}
+
+\end{document}
